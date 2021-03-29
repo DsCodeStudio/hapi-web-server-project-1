@@ -3,9 +3,10 @@
  * @create: 2021-03-26 14:28 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-26 14:31 PM
+ * @lastEditTime: 2021-03-29 08:44 AM
  * @desc: Run SQL
  */
+"use strict";
 
 /**
  * 执行SQL语句的函数，自带异常捕获

@@ -3,7 +3,7 @@
  * @create: 2021-03-28 11:55 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-28 19:22 PM
+ * @lastEditTime: 2021-03-29 08:47 AM
  * @desc: 项目文档
 -->
 
@@ -27,11 +27,13 @@ yarn dev || npm run dev
 # 项目依赖
 
 ```json
-"@hapi/hapi"  //
-"@hapi/inert" //
-"@hapi/vision" //
-"hapi-pino" //
-"hapi-plugin-mysql" //
-"hapi-swagger" //
-"joi" //
+"@hapi/hapi"  // 简单、安全、可信任的框架，构建功能强大，可拓展的应用程序。
+"@hapi/inert" // hapi.js 的静态文件和目录处理程序。
+"@hapi/vision" // hapi.js的模板渲染支持。
+"hapi-pino" // 用于日志记录的 pino logger 插件，以 JSON 形式记录日志，以便后期处理。
+"hapi-plugin-mysql" // hapi MySQL 插件。将每个请求连接到 MySQL 连接池。
+"hapi-swagger" // 这是Hapi的OpenAPI（又名Swagger）插件，安装后将自行记录项目中的API接口。
+"joi" // 最强大的JavaScript模式描述语言和数据验证器。
 ```
+
+`inert`，`vision` 是 `hapi` 生态系统的一部分，旨在与 hapi Web 框架及其其他组件无缝协作（但可以单独使用或与其他框架配合使用）。

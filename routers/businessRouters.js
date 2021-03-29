@@ -7,6 +7,8 @@
  * @desc: 用户软路由
  */
 
+"use strict";
+
 const allSQL = require("../sql/businessSQL");
 const query = require("../sql/queryData");
 const Joi = require("joi");

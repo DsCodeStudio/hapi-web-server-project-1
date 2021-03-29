@@ -6,6 +6,7 @@
  * @lastEditTime: 2021-03-27 16:14 PM
  * @desc: 用户软路由
  */
+"use strict";
 
 const allSQL = require("../sql/userSQL");
 const query = require("../sql/queryData");
