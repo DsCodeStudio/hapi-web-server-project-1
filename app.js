@@ -3,7 +3,7 @@
  * @create: 2021-03-23 18:32 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 12:31 PM
+ * @lastEditTime: 2021-03-29 15:52 PM
  * @desc: 服务器主文件
  */
 "use strict";
@@ -94,6 +94,20 @@ const init = async () => {
 process.on("unhandledRejection", (err) => {
   console.log(err);
   process.exit(1);
+});
+
+server.events.on("response", function (request) {
+  console.log(
+    request.info.remoteAddress +
+      ": " +
+      request.method.toUpperCase() +
+      " " +
+      request.path +
+      " --> " +
+      request.response.statusCode +
+      " " +
+      JSON.stringify(request.payload)
+  );
 });
 
 // 执行初始化函数

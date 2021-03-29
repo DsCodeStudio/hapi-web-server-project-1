@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 09:57 AM
+ * @lastEditTime: 2021-03-29 17:21 PM
  * @desc: 用户软路由
  */
 "use strict";
@@ -115,6 +115,7 @@ const user = [
         const security = req.payload.security;
         const security_answer = req.payload.security_answer;
         const upload_ID_Img = req.payload.upload_ID_Img;
+        req.log("Log Here");
         return query(
           req,
           allSQL.updateUserInfo(
