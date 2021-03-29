@@ -3,7 +3,7 @@
  * @create: 2021-03-26 14:28 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 08:44 AM
+ * @lastEditTime: 2021-03-29 10:00 AM
  * @desc: Run SQL
  */
 "use strict";
@@ -12,7 +12,7 @@
  * 执行SQL语句的函数，自带异常捕获
  * @param {*} req Request 请求体
  * @param {*} sql 需要执行的SQL
- * @returns
+ * @returns 执行 SQL 之后的结果
  */
 module.exports = async (req, sql) => {
   let result = "";

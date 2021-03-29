@@ -3,7 +3,7 @@
  * @create: 2021-03-27 16:12 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-27 16:20 PM
+ * @lastEditTime: 2021-03-29 14:42 PM
  * @desc: 所有业务SQL
  */
 "use strict";
@@ -37,26 +37,155 @@ const getAllBusinessTypeByID = (id) => {
  * 查询所有提交的单号信息,不区分用户,不筛选字段
  * @returns get all business data
  */
-const getAllbusinessInfo = () => {
+const getAllBusinessInfo = () => {
   return "SELECT * FROM `trademarkdata`.`business`;";
 };
 
 /**
  * 更据用户 ID 查询所有业务信息
  * @param {*} accountID 用户ID
- * @returns getAllbusinessInfoById SQL
+ * @returns getAllBusinessInfoByAccount SQL
  */
-const getAllbusinessInfoById = (accountID) => {
+const getAllBusinessInfoByAccount = (account) => {
   return (
-    "SELECT * FROM `trademarkdata`.`business` WHERE `accountID` = '" +
-    accountID +
+    "SELECT * FROM `trademarkdata`.`business` WHERE `account` = '" +
+    account +
     "';"
   );
 };
 
+/**
+ * 根据单号查询业务详细信息
+ * @param {*} orderID 单号
+ * @returns get Business Info By Order ID SQL
+ */
+const getBusinessInfoByOrderID = (orderID) => {
+  return (
+    "SELECT * FROM `trademarkdata`.`business` WHERE `order_id` = '" +
+    orderID +
+    "';"
+  );
+};
+
+/**
+ * 新增业务信息
+ * @param {*} account 账号 登录用户,跟用户表进行外键绑定
+ * @param {*} applicant_type 申请人类型 1.企业/单位申请2.自然人3.其他
+ * @param {*} applicant_name 申请人姓名/主题名称
+ * @param {*} valid_license 有效执照 1.身份证 2.营业执照3.其他
+ * @param {*} certificate_ID 执照号码/证件号码
+ * @param {*} certificate_type 证件类型 1.身份证 2.营业执照
+ * @param {*} address 地址信息
+ * @param {*} identity 所属省份
+ * @param {*} city 所属城市
+ * @param {*} EN_name 英文名称
+ * @param {*} legal_person 企业法人
+ * @param {*} EN_address 英文地址
+ * @param {*} applicant_nationality 申请人国籍/地区
+ * @param {*} postcode 邮政编码
+ * @param {*} contacts 联系人
+ * @param {*} agency_name 代理机构名称
+ * @param {*} domestic_recipients 外国申请人的国内接收人
+ * @param {*} application_country 申请/展出国家/地区
+ * @param {*} application_date 申请日期
+ * @param {*} application_instructions 商标说明
+ * @param {*} trademark_type_id 商标类别编号
+ * @param {*} nets 办理网点
+ * @param {*} business_type 业务类型
+ * @param {*} status 审核状态 1.审核中,2.审核完成,3.审核失败4.预约成功
+ * @returns 新增业务信息 SQL
+ */
+const createBusiness = (
+  account,
+  applicant_type,
+  applicant_name,
+  valid_license,
+  certificate_ID,
+  certificate_type,
+  address,
+  identity,
+  city,
+  EN_name,
+  legal_person,
+  EN_address,
+  applicant_nationality,
+  postcode,
+  contacts,
+  agency_name,
+  domestic_recipients,
+  application_country,
+  application_date,
+  application_instructions,
+  trademark_type_id,
+  nets,
+  business_type,
+  status
+) => {
+  return (
+    "INSERT INTO `trademarkdata`.`business`(`account`,  \
+  `applicant_type`,`applicant_name`,`valid_license`,\
+  `certificate_ID`,`certificate_type`,`address`,`identity`,`city`,\
+  `EN_name`,`legal_person`,`EN_address`,`applicant_nationality`,`postcode`,\
+  `contacts`,`agency_name`,`domestic_recipients`,`application_country`,`application_date`,`application_instructions`,\
+  `trademark_info`,`trademark_type_id`, `nets`, `business_type`, `status`)\
+   VALUES (" +
+    account +
+    "," +
+    order_id +
+    "," +
+    applicant_type +
+    "," +
+    applicant_name +
+    "," +
+    valid_license +
+    "," +
+    certificate_ID +
+    "," +
+    certificate_type +
+    "," +
+    address +
+    "," +
+    identity +
+    "," +
+    city +
+    "," +
+    EN_name +
+    "," +
+    legal_person +
+    "," +
+    EN_address +
+    "," +
+    applicant_nationality +
+    "," +
+    postcode +
+    "," +
+    contacts +
+    "," +
+    agency_name +
+    "," +
+    domestic_recipients +
+    "," +
+    application_country +
+    "," +
+    application_date +
+    "," +
+    application_instructions +
+    "," +
+    trademark_type_id +
+    "," +
+    nets +
+    "," +
+    business_type +
+    "," +
+    status +
+    ")"
+  );
+};
 module.exports = {
   getAllBusinessTypes: getAllBusinessTypes,
   getAllBusinessTypeByID: getAllBusinessTypeByID,
-  getAllbusinessInfo: getAllbusinessInfo,
-  getAllbusinessInfoById: getAllbusinessInfoById
+  getAllBusinessInfo: getAllBusinessInfo,
+  getAllBusinessInfoByAccount: getAllBusinessInfoByAccount,
+  getBusinessInfoByOrderID: getBusinessInfoByOrderID,
+  createBusiness: createBusiness
 };

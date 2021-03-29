@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-27 16:14 PM
+ * @lastEditTime: 2021-03-29 09:57 AM
  * @desc: 用户软路由
  */
 "use strict";
@@ -99,9 +99,61 @@ const user = [
         })
       }
     }
+  },
+  {
+    method: "post",
+    path: "/updateUserInfo",
+    handler: async (req, res) => {
+      try {
+        const account = req.payload.account;
+        const password = req.payload.password;
+        const username = req.payload.username;
+        const ID_card_type = req.payload.ID_card_type;
+        const ID_card_num = req.payload.ID_card_num;
+        const postcode = req.payload.postcode;
+        const address = req.payload.address;
+        const security = req.payload.security;
+        const security_answer = req.payload.security_answer;
+        const upload_ID_Img = req.payload.upload_ID_Img;
+        return query(
+          req,
+          allSQL.updateUserInfo(
+            account,
+            password,
+            username,
+            ID_card_type,
+            ID_card_num,
+            postcode,
+            address,
+            security,
+            security_answer,
+            upload_ID_Img
+          )
+        );
+      } catch (error) {
+        return error;
+      }
+    },
+    options: {
+      description: "更新个人信息",
+      notes: "前端传入姓名、证件号码、邮政编码、地址、账号、密保问题、密保答案",
+      tags: ["api"],
+      validate: {
+        payload: Joi.object({
+          account: Joi.string().required().description("账号"),
+          password: Joi.string().required().description("密码"),
+          username: Joi.string().required().description("姓名"),
+          ID_card_type: Joi.string().required().description("证件类型"),
+          ID_card_num: Joi.string().required().description("证件号码"),
+          postcode: Joi.string().required().description("邮政编码"),
+          address: Joi.string().required().description("地址"),
+          security: Joi.string().required().description("密保问题"),
+          security_answer: Joi.string().required().description("密保答案"),
+          upload_ID_Img: Joi.string().required().description("是否上传证件照片")
+        })
+      }
+    }
   }
-  // 创建用户
-  // 删除用户
 ];
 
 module.exports = user;

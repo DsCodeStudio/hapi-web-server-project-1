@@ -6,7 +6,7 @@
  * @lastEditTime: 2021-03-27 16:23 PM
  * @desc: 项目路由文件
  */
-'use strict'
+"use strict";
 
 const business = require("./businessRouters");
 const user = require("./userRouters");

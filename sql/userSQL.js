@@ -3,7 +3,7 @@
  * @create: 2021-03-26 14:16 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-27 16:17 PM
+ * @lastEditTime: 2021-03-29 12:56 PM
  * @desc: 所有用户SQL语句
  */
 "use strict";
@@ -65,9 +65,61 @@ const changePWD = (acount, oldPWD, newPWD) => {
   );
 };
 
+/**
+ *
+ * @param {*} account 账号
+ * @param {*} password 密码
+ * @param {*} username 用户名
+ * @param {*} ID_card_type 证件类型
+ * @param {*} ID_card_num 证件号码
+ * @param {*} postcode 邮编
+ * @param {*} address 地址
+ * @param {*} security 密保问题
+ * @param {*} security_answer 密保答案
+ * @param {*} upload_ID_Img 是否上传身份证
+ * @returns update user info SQL
+ */
+const updateUserInfo = (
+  account,
+  password,
+  username,
+  ID_card_type,
+  ID_card_num,
+  postcode,
+  address,
+  security,
+  security_answer,
+  upload_ID_Img
+) => {
+  return (
+    "UPDATE `trademarkdata`.`userdata` SET `username` = '" +
+    username +
+    "' `ID_card_type` = '" +
+    ID_card_type +
+    "', `ID_card_num` = '" +
+    ID_card_num +
+    "', `postcode` = '" +
+    postcode +
+    "', `address` = '" +
+    address +
+    "', `security` = '" +
+    security +
+    "', `security_answer` = '" +
+    security_answer +
+    "', `upload_ID_Img` = '" +
+    upload_ID_Img +
+    "' WHERE `account` = '" +
+    account +
+    "' AND `password` = '" +
+    password +
+    "';"
+  );
+};
+
 module.exports = {
   getAllAccounts: getAllAccounts,
   login: login,
   phone: phone,
-  changePWD: changePWD
+  changePWD: changePWD,
+  updateUserInfo: updateUserInfo
 };

@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-27 16:54 PM
+ * @lastEditTime: 2021-03-29 15:02 PM
  * @desc: 用户软路由
  */
 
@@ -51,10 +51,10 @@ const business = [
   },
   {
     method: "get",
-    path: "/getAllbusinessInfo",
+    path: "/getAllBusinessInfo",
     handler: async (req, res) => {
       try {
-        return query(req, allSQL.getAllbusinessInfo());
+        return query(req, allSQL.getAllBusinessInfo());
       } catch (error) {
         return error;
       }
@@ -67,28 +67,168 @@ const business = [
   },
   {
     method: "post",
-    path: "/getAllBusinessInfoById",
+    path: "/getAllBusinessInfoByAccount",
     handler: async (req, res) => {
       try {
-        const accountID = req.payload.accountID;
-        return query(req, allSQL.getAllbusinessInfoById(accountID));
+        const account = req.payload.account;
+        return query(req, allSQL.getAllBusinessInfoByAccount(account));
       } catch (error) {
         return error;
       }
     },
     options: {
       description: "用户所有的业务信息",
-      notes: "更据用户 ID 查询所有业务信息",
+      notes: "更据用户 账号 查询所有业务信息",
       tags: ["api"],
       validate: {
         payload: Joi.object({
-          accountID: Joi.string().required().description("账号ID")
+          account: Joi.string().required().description("账号ID")
+        })
+      }
+    }
+  },
+  {
+    method: "post",
+    path: "/getBusinessInfoByOrderID",
+    handler: async (req, res) => {
+      try {
+        const orderID = req.payload.orderID;
+        return query(req, allSQL.getBusinessInfoByOrderID(orderID));
+      } catch (error) {
+        return error;
+      }
+    },
+    options: {
+      description: "根据单号查询某一个业务详细信息",
+      notes: "根据单号 查询业务详细信息",
+      tags: ["api"],
+      validate: {
+        payload: Joi.object({
+          orderID: Joi.string().required().description("单号")
+        })
+      }
+    }
+  },
+  {
+    method: "post",
+    path: "/createBusiness",
+    handler: async (req, res) => {
+      try {
+        const account = req.payload.account;
+        const applicant_type = req.payload.applicant_type;
+        const applicant_name = req.payload.applicant_name;
+        const valid_license = req.payload.valid_license;
+        const certificate_ID = req.payload.certificate_ID;
+        const certificate_type = req.payload.certificate_type;
+        const address = req.payload.address;
+        const identity = req.payload.identity;
+        const city = req.payload.city;
+        const EN_name = req.payload.EN_name;
+        const legal_person = req.payload.legal_person;
+        const EN_address = req.payload.EN_address;
+        const applicant_nationality = req.payload.applicant_nationality;
+        const postcode = req.payload.postcode;
+        const contacts = req.payload.contacts;
+        const agency_name = req.payload.agency_name;
+        const domestic_recipients = req.payload.domestic_recipients;
+        const application_country = req.payload.application_country;
+        const application_date = req.payload.application_date;
+        const application_instructions = req.payload.application_instructions;
+        const trademark_type_id = req.payload.trademark_type_id;
+        const nets = req.payload.nets;
+        const business_type = req.payload.business_type;
+        const status = req.payload.status;
+        return query(
+          req,
+          allSQL.createBusiness(
+            account,
+            applicant_type,
+            applicant_name,
+            valid_license,
+            certificate_ID,
+            certificate_type,
+            address,
+            identity,
+            city,
+            EN_name,
+            legal_person,
+            EN_address,
+            applicant_nationality,
+            postcode,
+            contacts,
+            agency_name,
+            domestic_recipients,
+            application_country,
+            application_date,
+            application_instructions,
+            trademark_type_id,
+            nets,
+            business_type,
+            status
+          )
+        );
+      } catch (error) {
+        return error;
+      }
+    },
+    options: {
+      description: "根据单号查询某一个业务详细信息",
+      notes: "根据单号 查询业务详细信息",
+      tags: ["api"],
+      validate: {
+        payload: Joi.object({
+          account: Joi.string()
+            .required()
+            .description("账号 登录用户,跟用户表进行外键绑定"),
+          applicant_type: Joi.string()
+            .required()
+            .description("申请人类型 1.企业/单位申请2.自然人3.其他"),
+          applicant_name: Joi.string()
+            .required()
+            .description("申请人姓名/主题名称"),
+          valid_license: Joi.string()
+            .required()
+            .description("有效执照 1.身份证 2.营业执照3.其他"),
+          certificate_ID: Joi.string()
+            .required()
+            .description("执照号码/证件号码"),
+          certificate_type: Joi.string()
+            .required()
+            .description("证件类型 1.身份证 2.营业执照"),
+          address: Joi.string().required().description("地址信息"),
+          identity: Joi.string().required().description("所属省份"),
+          city: Joi.string().required().description("所属城市"),
+          EN_name: Joi.string().required().description("英文名称"),
+          legal_person: Joi.string().required().description("企业法人"),
+          EN_address: Joi.string().required().description("英文地址"),
+          applicant_nationality: Joi.string()
+            .required()
+            .description("申请人国籍/地区"),
+          postcode: Joi.string().required().description("邮政编码"),
+          contacts: Joi.string().required().description("联系人"),
+          agency_name: Joi.string().required().description("代理机构名称"),
+          domestic_recipients: Joi.string()
+            .required()
+            .description("外国申请人的国内接收人"),
+          application_country: Joi.string()
+            .required()
+            .description("申请/展出国家/地区"),
+          application_date: Joi.string().required().description("申请日期"),
+          application_instructions: Joi.string()
+            .required()
+            .description("商标说明"),
+          trademark_type_id: Joi.string()
+            .required()
+            .description("商标类别编号"),
+          nets: Joi.string().required().description("办理网点"),
+          business_type: Joi.string().required().description("业务类型"),
+          status: Joi.string()
+            .required()
+            .description("审核状态 1.审核中,2.审核完成,3.审核失败4.预约成功")
         })
       }
     }
   }
-  // 创建用户
-  // 删除用户
 ];
 
 module.exports = business;
