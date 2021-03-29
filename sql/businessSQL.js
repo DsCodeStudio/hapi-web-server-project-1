@@ -3,7 +3,7 @@
  * @create: 2021-03-27 16:12 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 14:42 PM
+ * @lastEditTime: 2021-03-29 17:30 PM
  * @desc: 所有业务SQL
  */
 "use strict";
@@ -76,6 +76,7 @@ const getBusinessInfoByOrderID = (orderID) => {
  * @param {*} certificate_ID 执照号码/证件号码
  * @param {*} certificate_type 证件类型 1.身份证 2.营业执照
  * @param {*} address 地址信息
+ * @param {*} phone 联系电话
  * @param {*} identity 所属省份
  * @param {*} city 所属城市
  * @param {*} EN_name 英文名称
@@ -103,6 +104,7 @@ const createBusiness = (
   certificate_ID,
   certificate_type,
   address,
+  phone,
   identity,
   city,
   EN_name,
@@ -124,7 +126,7 @@ const createBusiness = (
   return (
     "INSERT INTO `trademarkdata`.`business`(`account`,  \
   `applicant_type`,`applicant_name`,`valid_license`,\
-  `certificate_ID`,`certificate_type`,`address`,`identity`,`city`,\
+  `certificate_ID`,`certificate_type`,`address`, `phone`,`identity`,`city`,\
   `EN_name`,`legal_person`,`EN_address`,`applicant_nationality`,`postcode`,\
   `contacts`,`agency_name`,`domestic_recipients`,`application_country`,`application_date`,`application_instructions`,\
   `trademark_info`,`trademark_type_id`, `nets`, `business_type`, `status`)\
@@ -144,6 +146,8 @@ const createBusiness = (
     certificate_type +
     "," +
     address +
+    "," +
+    phone +
     "," +
     identity +
     "," +

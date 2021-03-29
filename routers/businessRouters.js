@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 15:11 PM
+ * @lastEditTime: 2021-03-29 17:31 PM
  * @desc: 用户软路由
  */
 
@@ -121,6 +121,7 @@ const business = [
         const certificate_ID = req.payload.certificate_ID;
         const certificate_type = req.payload.certificate_type;
         const address = req.payload.address;
+        const phone = req.payload.phone;
         const identity = req.payload.identity;
         const city = req.payload.city;
         const EN_name = req.payload.EN_name;
@@ -148,6 +149,7 @@ const business = [
             certificate_ID,
             certificate_type,
             address,
+            phone,
             identity,
             city,
             EN_name,
@@ -172,8 +174,8 @@ const business = [
       }
     },
     options: {
-      description: "根据单号查询某一个业务详细信息",
-      notes: "根据单号 查询业务详细信息",
+      description: "创建新的业务",
+      notes: "创建新业务，字段多，注意验证",
       tags: ["api"],
       validate: {
         payload: Joi.object({
@@ -196,6 +198,7 @@ const business = [
             .required()
             .description("证件类型 1.身份证 2.营业执照"),
           address: Joi.string().required().description("地址信息"),
+          phone: Joi.string().required().description("联系电话"),
           identity: Joi.string().required().description("所属省份"),
           city: Joi.string().required().description("所属城市"),
           EN_name: Joi.string().required().description("英文名称"),
