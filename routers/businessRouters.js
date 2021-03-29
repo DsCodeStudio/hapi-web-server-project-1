@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 15:02 PM
+ * @lastEditTime: 2021-03-29 15:11 PM
  * @desc: 用户软路由
  */
 
@@ -13,7 +13,7 @@ const allSQL = require("../sql/businessSQL");
 const query = require("../sql/queryData");
 const Joi = require("joi");
 
-// TODO 用户路由
+// TODO 业务路由
 const business = [
   {
     method: "get",
