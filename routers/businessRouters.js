@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-30 14:44 PM
+ * @lastEditTime: 2021-03-31 14:48 PM
  * @desc: 用户软路由
  */
 
@@ -169,7 +169,8 @@ const business = [
             nets,
             business_type,
             status
-          )
+          ),
+          "SQL 测试语句"
         );
         return query(
           req,
@@ -262,6 +263,28 @@ const business = [
           status: Joi.string()
             .required()
             .description("审核状态 1.审核中,2.审核完成,3.审核失败4.预约成功")
+        })
+      }
+    }
+  },
+  {
+    method: "post",
+    path: "/deleteBusiness",
+    handler: async (req, res) => {
+      try {
+        const orderID = req.payload.orderID;
+        return query(req, allSQL.deleteBusiness(orderID));
+      } catch (error) {
+        return error;
+      }
+    },
+    options: {
+      description: "根据单号删除某一个业务详细信息",
+      notes: "根据单号删除单一业务信息",
+      tags: ["api"],
+      validate: {
+        payload: Joi.object({
+          orderID: Joi.string().required().description("单号")
         })
       }
     }

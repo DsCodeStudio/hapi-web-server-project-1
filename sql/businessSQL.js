@@ -3,7 +3,7 @@
  * @create: 2021-03-27 16:12 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-30 14:31 PM
+ * @lastEditTime: 2021-03-31 14:47 PM
  * @desc: 所有业务SQL
  */
 "use strict";
@@ -186,11 +186,26 @@ const createBusiness = (
     "')"
   );
 };
+
+/**
+ * 删除单一业务
+ * @param {*} order_id 业务单号
+ * @returns delete business SQL
+ */
+const deleteBusiness = (order_id) => {
+  return (
+    "DELETE FROM `trademarkdata`.`business` WHERE `order_id` = '" +
+    order_id +
+    "';"
+  );
+};
+
 module.exports = {
   getAllBusinessTypes: getAllBusinessTypes,
   getAllBusinessTypeByID: getAllBusinessTypeByID,
   getAllBusinessInfo: getAllBusinessInfo,
   getAllBusinessInfoByAccount: getAllBusinessInfoByAccount,
   getBusinessInfoByOrderID: getBusinessInfoByOrderID,
-  createBusiness: createBusiness
+  createBusiness: createBusiness,
+  deleteBusiness: deleteBusiness
 };
