@@ -3,7 +3,7 @@
  * @create: 2021-03-27 16:12 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 17:30 PM
+ * @lastEditTime: 2021-03-30 14:31 PM
  * @desc: 所有业务SQL
  */
 "use strict";
@@ -111,13 +111,14 @@ const createBusiness = (
   legal_person,
   EN_address,
   applicant_nationality,
-  postcode,
+  postal_code,
   contacts,
   agency_name,
   domestic_recipients,
   application_country,
   application_date,
   application_instructions,
+  trademark_info,
   trademark_type_id,
   nets,
   business_type,
@@ -127,62 +128,62 @@ const createBusiness = (
     "INSERT INTO `trademarkdata`.`business`(`account`,  \
   `applicant_type`,`applicant_name`,`valid_license`,\
   `certificate_ID`,`certificate_type`,`address`, `phone`,`identity`,`city`,\
-  `EN_name`,`legal_person`,`EN_address`,`applicant_nationality`,`postcode`,\
+  `EN_name`,`legal_person`,`EN_address`,`applicant_nationality`,`postal_code`,\
   `contacts`,`agency_name`,`domestic_recipients`,`application_country`,`application_date`,`application_instructions`,\
   `trademark_info`,`trademark_type_id`, `nets`, `business_type`, `status`)\
-   VALUES (" +
+   VALUES ('" +
     account +
-    "," +
-    order_id +
-    "," +
+    "','" +
     applicant_type +
-    "," +
+    "','" +
     applicant_name +
-    "," +
+    "','" +
     valid_license +
-    "," +
+    "','" +
     certificate_ID +
-    "," +
+    "','" +
     certificate_type +
-    "," +
+    "','" +
     address +
-    "," +
+    "','" +
     phone +
-    "," +
+    "','" +
     identity +
-    "," +
+    "','" +
     city +
-    "," +
+    "','" +
     EN_name +
-    "," +
+    "','" +
     legal_person +
-    "," +
+    "','" +
     EN_address +
-    "," +
+    "','" +
     applicant_nationality +
-    "," +
-    postcode +
-    "," +
+    "','" +
+    postal_code +
+    "','" +
     contacts +
-    "," +
+    "','" +
     agency_name +
-    "," +
+    "','" +
     domestic_recipients +
-    "," +
+    "','" +
     application_country +
-    "," +
+    "','" +
     application_date +
-    "," +
+    "','" +
     application_instructions +
-    "," +
+    "','" +
+    trademark_info +
+    "','" +
     trademark_type_id +
-    "," +
+    "','" +
     nets +
-    "," +
+    "','" +
     business_type +
-    "," +
+    "','" +
     status +
-    ")"
+    "')"
   );
 };
 module.exports = {

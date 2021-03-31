@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 17:31 PM
+ * @lastEditTime: 2021-03-30 14:44 PM
  * @desc: 用户软路由
  */
 
@@ -128,17 +128,49 @@ const business = [
         const legal_person = req.payload.legal_person;
         const EN_address = req.payload.EN_address;
         const applicant_nationality = req.payload.applicant_nationality;
-        const postcode = req.payload.postcode;
+        const postal_code = req.payload.postal_code;
         const contacts = req.payload.contacts;
         const agency_name = req.payload.agency_name;
         const domestic_recipients = req.payload.domestic_recipients;
         const application_country = req.payload.application_country;
         const application_date = req.payload.application_date;
         const application_instructions = req.payload.application_instructions;
+        const trademark_info = req.payload.trademark_info;
         const trademark_type_id = req.payload.trademark_type_id;
         const nets = req.payload.nets;
         const business_type = req.payload.business_type;
         const status = req.payload.status;
+
+        req.log(
+          allSQL.createBusiness(
+            account,
+            applicant_type,
+            applicant_name,
+            valid_license,
+            certificate_ID,
+            certificate_type,
+            address,
+            phone,
+            identity,
+            city,
+            EN_name,
+            legal_person,
+            EN_address,
+            applicant_nationality,
+            postal_code,
+            contacts,
+            agency_name,
+            domestic_recipients,
+            application_country,
+            application_date,
+            application_instructions,
+            trademark_info,
+            trademark_type_id,
+            nets,
+            business_type,
+            status
+          )
+        );
         return query(
           req,
           allSQL.createBusiness(
@@ -156,13 +188,14 @@ const business = [
             legal_person,
             EN_address,
             applicant_nationality,
-            postcode,
+            postal_code,
             contacts,
             agency_name,
             domestic_recipients,
             application_country,
             application_date,
             application_instructions,
+            trademark_info,
             trademark_type_id,
             nets,
             business_type,
@@ -207,7 +240,7 @@ const business = [
           applicant_nationality: Joi.string()
             .required()
             .description("申请人国籍/地区"),
-          postcode: Joi.string().required().description("邮政编码"),
+          postal_code: Joi.string().required().description("邮政编码"),
           contacts: Joi.string().required().description("联系人"),
           agency_name: Joi.string().required().description("代理机构名称"),
           domestic_recipients: Joi.string()
@@ -219,7 +252,8 @@ const business = [
           application_date: Joi.string().required().description("申请日期"),
           application_instructions: Joi.string()
             .required()
-            .description("商标说明"),
+            .description("商标申请说明"),
+          trademark_info: Joi.string().required().description("商标说明"),
           trademark_type_id: Joi.string()
             .required()
             .description("商标类别编号"),
