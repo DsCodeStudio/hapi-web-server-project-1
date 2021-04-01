@@ -3,7 +3,7 @@
  * @create: 2021-03-26 14:16 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 16:10 PM
+ * @lastEditTime: 2021-03-31 15:55 PM
  * @desc: 所有用户SQL语句
  */
 "use strict";
@@ -24,7 +24,7 @@ const login = (account, password) => {
   return (
     "SELECT id,username,account,password  FROM `trademarkdata`.`userdata` WHERE `account` = '" +
     account +
-    "' AND `password` ='" +
+    "' AND `password` = '" +
     password +
     "';"
   );

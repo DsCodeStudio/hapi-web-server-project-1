@@ -3,7 +3,7 @@
  * @create: 2021-03-27 16:12 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-31 14:47 PM
+ * @lastEditTime: 2021-03-31 17:03 PM
  * @desc: 所有业务SQL
  */
 "use strict";
@@ -200,6 +200,21 @@ const deleteBusiness = (order_id) => {
   );
 };
 
+/**
+ * 根据业务状态查询相应业务数据
+ * @param {*} account 账号
+ * @param {*} status 业务状态
+ * @returns get business By status SQL
+ */
+const getBusinessInfoByStatus = (account, status) => {
+  return (
+    "SELECT * FROM `trademarkdata`.`business` WHERE `account` = '" +
+    account +
+    "' AND `status` = '" +
+    status +
+    "';"
+  );
+};
 module.exports = {
   getAllBusinessTypes: getAllBusinessTypes,
   getAllBusinessTypeByID: getAllBusinessTypeByID,
@@ -207,5 +222,6 @@ module.exports = {
   getAllBusinessInfoByAccount: getAllBusinessInfoByAccount,
   getBusinessInfoByOrderID: getBusinessInfoByOrderID,
   createBusiness: createBusiness,
-  deleteBusiness: deleteBusiness
+  deleteBusiness: deleteBusiness,
+  getBusinessInfoByStatus: getBusinessInfoByStatus
 };

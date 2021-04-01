@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-31 14:48 PM
+ * @lastEditTime: 2021-03-31 16:32 PM
  * @desc: 用户软路由
  */
 
@@ -285,6 +285,30 @@ const business = [
       validate: {
         payload: Joi.object({
           orderID: Joi.string().required().description("单号")
+        })
+      }
+    }
+  },
+  {
+    method: "post",
+    path: "/getBusinessInfoByStatus",
+    handler: async (req, res) => {
+      try {
+        const account = req.payload.account;
+        const status = req.payload.status;
+        return query(req, allSQL.getBusinessInfoByStatus(account, status));
+      } catch (error) {
+        return error;
+      }
+    },
+    options: {
+      description: "根据业务状态信息查询业务信息",
+      notes: "需要传入账号以及业务状态 1.申请中,2,成功,3,失败,4,预约成功",
+      tags: ["api"],
+      validate: {
+        payload: Joi.object({
+          account: Joi.string().required().description("账号"),
+          status: Joi.string().required().description("状态")
         })
       }
     }

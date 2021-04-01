@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-29 17:21 PM
+ * @lastEditTime: 2021-03-31 15:55 PM
  * @desc: 用户软路由
  */
 "use strict";
@@ -33,6 +33,8 @@ const user = [
       try {
         const account = req.payload.account;
         const password = req.payload.password;
+
+        req.log(allSQL.login(account, password));
         return query(req, allSQL.login(account, password));
       } catch (error) {
         return error;
