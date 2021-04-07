@@ -3,7 +3,7 @@
  * @create: 2021-03-23 18:32 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-31 18:33 PM
+ * @lastEditTime: 2021-04-06 15:26 PM
  * @desc: 服务器主文件
  */
 "use strict";
@@ -21,8 +21,8 @@ const Routers = require("./routers/router");
 // 创建一个 HTTP 服务
 // (async () => {})(); 可用此方法改进函数
 const server = Hapi.server({
-  port: 3000,
-  host: "192.168.2.52",
+  port: 3003,
+  host: "127.0.0.1",
   debug: false, // disable Hapi debug console logging
   // 配置跨域
   routes: {
