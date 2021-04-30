@@ -3,7 +3,7 @@
  * @create: 2021-03-23 18:32 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-04-13 09:04 AM
+ * @lastEditTime: 2021-04-30 15:55 PM
  * @desc: 服务器主文件
  */
 'use strict';
@@ -22,7 +22,7 @@ const Routers = require('./routers/router');
 // (async () => {})(); 可用此方法改进函数
 const server = Hapi.server({
   port: 3000,
-  host: '192.168.2.54',
+  host: 'localhost',
   debug: false, // disable Hapi debug console logging
   // 配置跨域
   routes: {
@@ -35,7 +35,7 @@ const server = Hapi.server({
 // 配置 Swagger
 const swaggerOptions = {
   info: {
-    title: 'Test API Documentation',
+    title: 'API 文档',
     version: Pack.version,
   },
 };
@@ -48,6 +48,7 @@ const init = async () => {
     options: {
       // 格式化日志输出
       prettyPrint: true,
+      // 获取权限
       redact: [
         'req.headers.authorization',
         'key',
@@ -74,6 +75,7 @@ const init = async () => {
     Inert,
     Vision,
     {
+      // plugin: require('hapi-swagger');
       plugin: HapiSwagger,
       options: swaggerOptions,
     },
@@ -87,6 +89,7 @@ const init = async () => {
   }
 
   // 注册路由
+  // server.route([])
   server.route(Routers);
 };
 

@@ -3,10 +3,10 @@
  * @create: 2021-03-27 16:12 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-31 17:03 PM
+ * @lastEditTime: 2021-04-30 16:13 PM
  * @desc: 所有业务SQL
  */
-"use strict";
+'use strict';
 
 /** ----------------------------------------------------------------
  * TODO Business APIs
@@ -17,7 +17,7 @@
  * @returns Select businesstype SQL
  */
 const getAllBusinessTypes = () => {
-  return "SELECT * FROM `trademarkdata`.`businesstype`;";
+  return 'SELECT * FROM `trademarkdata`.`businesstype`;';
 };
 
 /**
@@ -38,7 +38,7 @@ const getAllBusinessTypeByID = (id) => {
  * @returns get all business data
  */
 const getAllBusinessInfo = () => {
-  return "SELECT * FROM `trademarkdata`.`business`;";
+  return 'SELECT * FROM `trademarkdata`.`business`;';
 };
 
 /**
@@ -223,5 +223,5 @@ module.exports = {
   getBusinessInfoByOrderID: getBusinessInfoByOrderID,
   createBusiness: createBusiness,
   deleteBusiness: deleteBusiness,
-  getBusinessInfoByStatus: getBusinessInfoByStatus
+  getBusinessInfoByStatus: getBusinessInfoByStatus,
 };
