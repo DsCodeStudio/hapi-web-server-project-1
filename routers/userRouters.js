@@ -3,24 +3,24 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-04-30 17:04 PM
+ * @lastEditTime: 2021-05-08 10:07 AM
  * @desc: 用户软路由
  */
-'use strict';
+'use strict'
 
-const allSQL = require('../sql/userSQL');
-const query = require('../sql/queryData');
-const Joi = require('joi');
-const Rtest = require('./test');
+const allSQL = require('../sql/userSQL')
+const query = require('../sql/queryData')
+const Joi = require('joi')
+const Rtest = require('./test')
 
-const T = require('../test/userTest');
+const T = require('../test/userTest')
 // TODO 用户路由
 const user = [
   {
     method: 'get',
     path: '/getAllAccountInfo',
     handler: async (req, res) => {
-      return query(req, allSQL.getAllAccounts);
+      return query(req, allSQL.getAllAccounts)
     },
     options: {
       description: '获取所有账户信息',
@@ -33,8 +33,8 @@ const user = [
     path: '/login',
     handler: async (req, res) => {
       try {
-        const account = req.payload.account;
-        const password = req.payload.password;
+        const account = req.payload.account
+        const password = req.payload.password
         // ! 析构所有参数
         // const all = [{ ...req.payload }];
 
@@ -42,13 +42,13 @@ const user = [
         const testData = [
           { data: account, tag: 1 },
           { data: account, tag: 2 },
-        ];
+        ]
 
         return T(testData)
           ? query(req, allSQL.login(account, password))
-          : 'Error';
+          : 'Error'
       } catch (error) {
-        return error;
+        return error
       }
     },
     // 配置 Swagger
@@ -70,11 +70,11 @@ const user = [
     path: '/phone',
     handler: async (req, res) => {
       try {
-        const phone = req.payload.phone;
-        const code = req.payload.code;
-        return query(req, allSQL.phone(phone, code));
+        const phone = req.payload.phone
+        const code = req.payload.code
+        return query(req, allSQL.phone(phone, code))
       } catch (error) {
-        return error;
+        return error
       }
     },
     options: {
@@ -94,12 +94,12 @@ const user = [
     path: '/changePWD',
     handler: async (req, res) => {
       try {
-        const acount = req.payload.acount;
-        const oldPWD = req.payload.oldPWD;
-        const newPWD = req.payload.newPWD;
-        return query(req, allSQL.changePWD(acount, oldPWD, newPWD));
+        const acount = req.payload.acount
+        const oldPWD = req.payload.oldPWD
+        const newPWD = req.payload.newPWD
+        return query(req, allSQL.changePWD(acount, oldPWD, newPWD))
       } catch (error) {
-        return error;
+        return error
       }
     },
     options: {
@@ -120,17 +120,17 @@ const user = [
     path: '/updateUserInfo',
     handler: async (req, res) => {
       try {
-        const account = req.payload.account;
-        const password = req.payload.password;
-        const username = req.payload.username;
-        const ID_card_type = req.payload.ID_card_type;
-        const ID_card_num = req.payload.ID_card_num;
-        const postcode = req.payload.postcode;
-        const address = req.payload.address;
-        const security = req.payload.security;
-        const security_answer = req.payload.security_answer;
-        const upload_ID_Img = req.payload.upload_ID_Img;
-        req.log('Log Here');
+        const account = req.payload.account
+        const password = req.payload.password
+        const username = req.payload.username
+        const ID_card_type = req.payload.ID_card_type
+        const ID_card_num = req.payload.ID_card_num
+        const postcode = req.payload.postcode
+        const address = req.payload.address
+        const security = req.payload.security
+        const security_answer = req.payload.security_answer
+        const upload_ID_Img = req.payload.upload_ID_Img
+        req.log('Log Here')
         return query(
           req,
           allSQL.updateUserInfo(
@@ -145,9 +145,9 @@ const user = [
             security_answer,
             upload_ID_Img
           )
-        );
+        )
       } catch (error) {
-        return error;
+        return error
       }
     },
     options: {
@@ -172,6 +172,6 @@ const user = [
       },
     },
   },
-];
+]
 
-module.exports = user;
+module.exports = user

@@ -43,7 +43,7 @@ const getAllBusinessInfo = () => {
 
 /**
  * 更据用户 ID 查询所有业务信息
- * @param {*} accountID 用户ID
+ * @param {*} account 用户ID
  * @returns getAllBusinessInfoByAccount SQL
  */
 const getAllBusinessInfoByAccount = (account) => {
@@ -83,13 +83,14 @@ const getBusinessInfoByOrderID = (orderID) => {
  * @param {*} legal_person 企业法人
  * @param {*} EN_address 英文地址
  * @param {*} applicant_nationality 申请人国籍/地区
- * @param {*} postcode 邮政编码
+ * @param {*} postal_code 邮政编码
  * @param {*} contacts 联系人
  * @param {*} agency_name 代理机构名称
  * @param {*} domestic_recipients 外国申请人的国内接收人
  * @param {*} application_country 申请/展出国家/地区
  * @param {*} application_date 申请日期
  * @param {*} application_instructions 商标说明
+ * @param {*} trademark_info 商标注册信息
  * @param {*} trademark_type_id 商标类别编号
  * @param {*} nets 办理网点
  * @param {*} business_type 业务类型

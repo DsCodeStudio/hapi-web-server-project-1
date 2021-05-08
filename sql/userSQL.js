@@ -48,17 +48,17 @@ const phone = (phone, code) => {
 
 /**
  * 更改密码 + 设置新密码
- * @param {*} acount 账号
+ * @param {*} account 账号
  * @param {*} oldPWD 老密码
  * @param {*} newPWD 新密码
  * @returns Change password SQL
  */
-const changePWD = (acount, oldPWD, newPWD) => {
+const changePWD = (account, oldPWD, newPWD) => {
   return (
     "UPDATE `trademarkdata`.`userdata` SET `password` = '" +
     newPWD +
     "' WHERE `account` = '" +
-    acount +
+    account +
     "' AND `password` = '" +
     oldPWD +
     "'; "
