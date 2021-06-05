@@ -3,12 +3,12 @@
  * @create: 2021-03-23 18:32 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-04-30 15:55 PM
+ * @lastEditTime: 2021-06-05 10:57 AM
  * @desc: 服务器主文件
  */
 'use strict';
 
-// 引用 Hapi
+// TODO 引用 Hapi
 const Hapi = require('@hapi/hapi');
 
 const Inert = require('@hapi/inert');
@@ -16,15 +16,16 @@ const Vision = require('@hapi/vision');
 const HapiSwagger = require('hapi-swagger');
 const Pack = require('./package');
 
-// 导入路由
+// TODO 导入路由
 const Routers = require('./routers/router');
+
 // 创建一个 HTTP 服务
 // (async () => {})(); 可用此方法改进函数
 const server = Hapi.server({
   port: 3000,
   host: 'localhost',
   debug: false, // disable Hapi debug console logging
-  // 配置跨域
+  // TODO 配置跨域
   routes: {
     cors: {
       origin: ['*'],
@@ -32,7 +33,7 @@ const server = Hapi.server({
   },
 });
 
-// 配置 Swagger
+// TODO 配置 Swagger
 const swaggerOptions = {
   info: {
     title: 'API 文档',
@@ -40,9 +41,9 @@ const swaggerOptions = {
   },
 };
 
-// 初始化 App
+// TODO 初始化 App
 const init = async () => {
-  // 使用 Hapi 日志组件，实时监控程序运行情况
+  // TODO 使用 Hapi 日志组件，实时监控程序运行情况
   await server.register({
     plugin: require('hapi-pino'),
     options: {
@@ -59,7 +60,7 @@ const init = async () => {
     },
   });
 
-  // 连接数据库
+  // TODO 连接数据库
   await server.register({
     plugin: require('hapi-plugin-mysql'),
     options: {
@@ -70,7 +71,7 @@ const init = async () => {
     },
   });
 
-  // 注册 Swagger 组件
+  // TODO 注册 Swagger 组件
   await server.register([
     Inert,
     Vision,
@@ -88,12 +89,12 @@ const init = async () => {
     console.log(err);
   }
 
-  // 注册路由
+  // TODO 注册路由
   // server.route([])
   server.route(Routers);
 };
 
-// 捕获软件运行异常
+// TODO 捕获软件运行异常
 process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
@@ -102,16 +103,16 @@ process.on('unhandledRejection', (err) => {
 server.events.on('response', function (request) {
   console.log(
     request.info.remoteAddress +
-      ': ' +
-      request.method.toUpperCase() +
-      ' ' +
-      request.path +
-      ' --> ' +
-      request.response.statusCode +
-      ' ' +
-      JSON.stringify(request.payload)
+    ': ' +
+    request.method.toUpperCase() +
+    ' ' +
+    request.path +
+    ' --> ' +
+    request.response.statusCode +
+    ' ' +
+    JSON.stringify(request.payload)
   );
 });
 
-// 执行初始化函数
+// TODO 执行初始化函数
 init();

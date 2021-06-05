@@ -3,7 +3,7 @@
  * @create: 2021-03-24 12:16 PM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-03-27 16:23 PM
+ * @lastEditTime: 2021-06-05 10:58 AM
  * @desc: 项目路由文件
  */
 "use strict";
@@ -24,6 +24,7 @@ module.exports = [
       return "欢迎来到商标注册系统😎";
     }
   },
+  // TODO 将子路由合并到主路由
   ...user,
   ...business
 ];

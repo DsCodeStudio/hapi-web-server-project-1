@@ -3,7 +3,7 @@
  * @create: 2021-03-26 10:00 AM
  * @license: MIT
  * @lastAuthor: DSCode
- * @lastEditTime: 2021-05-08 10:07 AM
+ * @lastEditTime: 2021-06-05 11:06 AM
  * @desc: 用户软路由
  */
 'use strict'
@@ -53,7 +53,7 @@ const user = [
     },
     // 配置 Swagger
     options: {
-      description: '账号登录接口',
+      description: '用户账号登录接口',
       notes: '前端传入account password 进行登录验证',
       tags: ['api'],
       validate: {
